@@ -105,14 +105,40 @@ function documentLoader() {
   var PercyArray = Array.from(visible_percy);
     if (event.target.value == 'both') {
     //write an forEach() method that shows all the text written and modified by both hand (in black?). The forEach() method of Array instances executes a provided function once for each array element.
-     
+    MaryArray.forEach(function (element) {
+      element.style.color = 'black';
+    });
+    PercyArray.forEach(function (element) {
+      element.style.color = 'black';
+    });
     } else if (event.target.value == 'Mary') {
      //write an forEach() method that shows all the text written and modified by Mary in a different color (or highlight it) and the text by Percy in black. 
-     
+     MaryArray.forEach(function (element) {
+      element.style.color = 'blue';
+    });
+    PercyArray.forEach(function (element) {
+      element.style.color = 'black';
+    });
     } else {
      //write an forEach() method that shows all the text written and modified by Percy in a different color (or highlight it) and the text by Mary in black.
-    
+     MaryArray.forEach(function (element) {
+      element.style.color = 'black';
+    });
+    PercyArray.forEach(function (element) {
+      element.style.color = 'blue';
+    });
     }
   }
 // write another function that will toggle the display of the deletions by clicking on a button
+function toggleDeletions() {
+  var visible_deletions = document.getElementsByTagName('del');
+  var deletionsArray = Array.from(visible_deletions);
+  deletionsArray.forEach(function (element) {
+    if (element.style.display == 'none') {
+      element.style.display = 'inline';
+    } else {
+      element.style.display = 'none';
+    }
+  });
+}
 // EXTRA: write a function that will display the text as a reading text by clicking on a button or another dropdown list, meaning that all the deletions are removed and that the additions are shown inline (not in superscript)

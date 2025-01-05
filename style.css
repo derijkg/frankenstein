@@ -1,4 +1,5 @@
 body {
+    
 
 }
 .starter-template {
@@ -26,10 +27,41 @@ p {
 
 .marginAdd {
     display: none;
+    /* make it appear where the original text was */
+    position: relative;
 }
 
 .mirador-canvas-nav {
     display: none !important;
 }
+
+.supraAdd {
+    font-size: smaller;
+    position: relative;
+    top: -0.5em;
+}
+
+.navbuttons {
+    text-align: center;
+}
+
+.circled {
+    border-radius: 50%;
+    border: 1px solid rgb(0, 0, 0);
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    line-height: 1.5em;
+    display: inline-block;
+    margin: 0 0.5em;
+    float: right;
+}
+
+.navbuttons a {
+    font: oblique;
+    
+}
+
+
 
 

@@ -43,6 +43,8 @@
         <div class="#MWS"><xsl:apply-templates/></div>
     </xsl:template>
     
+
+    
     <xsl:template match="tei:p">
         <p><xsl:apply-templates/></p>
     </xsl:template>
@@ -72,6 +74,44 @@
     
     
     <!-- add additional templates below, for example to transform the tei:lb in <br/> empty elements, tei:hi[@rend = 'sup'] in <sup> elements, the underlined text, additions with the attribute "overwritten" etc. -->
+    <xsl:template match="tei:lb">
+        <br/>
+    </xsl:template>
 
-    
+    <xsl:template match="tei:hi[@rend = 'sup']">
+        <sup>
+            <xsl:apply-templates/>
+        </sup>
+    </xsl:template>
+
+    <xsl:template match="tei:add[@place = 'overwritten']">
+        <b>
+            <xsl:apply-templates/>
+        </b>
+    </xsl:template>
+
+    <xsl:template match="tei:hi[@rend = 'u']">
+        <u>
+            <xsl:apply-templates/>
+        </u>
+    </xsl:template>
+
+    <xsl:template match="tei:hi[@rend = 'circled']">
+        <span class="circled">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+
+    <!--align tei:add[@place='marginleft'] next to del parent-->
+    <xsl:template match="tei:add[@place = 'marginleft']">
+        <span class="marginAdd">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+
+    <xsl:template match="tei:add[@place = 'intralinear']">
+        <i>
+            <xsl:apply-templates/>
+        </i>
+    </xsl:template>
 </xsl:stylesheet>
