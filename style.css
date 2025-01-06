@@ -27,8 +27,6 @@ p {
 
 .marginAdd {
     display: none;
-    /* make it appear where the original text was */
-    position: relative;
 }
 
 .mirador-canvas-nav {

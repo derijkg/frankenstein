@@ -5,7 +5,7 @@
     exclude-result-prefixes="xs tei"
     version="2.0">
     
-    <!-- <xsl:output method="xml" omit-xml-declaration="yes" indent="yes" /> -->
+<!--<xsl:output method="xml" omit-xml-declaration="yes" indent="yes" />-->
     <xsl:template match="tei:teiHeader"/>
 
     <xsl:template match="tei:body">
@@ -84,12 +84,6 @@
         </sup>
     </xsl:template>
 
-    <xsl:template match="tei:add[@place = 'overwritten']">
-        <b>
-            <xsl:apply-templates/>
-        </b>
-    </xsl:template>
-
     <xsl:template match="tei:hi[@rend = 'u']">
         <u>
             <xsl:apply-templates/>
@@ -102,16 +96,70 @@
         </span>
     </xsl:template>
 
-    <!--align tei:add[@place='marginleft'] next to del parent-->
-    <xsl:template match="tei:add[@place = 'marginleft']">
-        <span class="marginAdd">
+
+    <xsl:template match="tei:add[@place = 'inline']">
+        <i>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@hand"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </i>
+    </xsl:template>
+
+    <xsl:template match="tei:add[@place = 'intralinear']">
+        <b>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@hand"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </b>
+    </xsl:template>
+
+    <xsl:template match="tei:add[@place = 'supralinear']">
+        <sup>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@hand"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </sup>
+    </xsl:template>
+
+        <xsl:template match="tei:add[@place = 'infralinear']">
+        <sub>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@hand"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </sub>
+    </xsl:template>
+
+    <xsl:template match="tei:item">
+        <li>
+            <xsl:apply-templates/>
+        </li>
+    </xsl:template>
+
+    <xsl:template match="tei:item[@rend ='right']">
+        <span class="itemRight">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
 
-    <xsl:template match="tei:add[@place = 'intralinear']">
-        <i>
+    <xsl:template match="tei:list">
+        <ul>
             <xsl:apply-templates/>
-        </i>
+        </ul>
     </xsl:template>
+
+<xsl:template match="tei:l">
+    <span>
+        <xsl:apply-templates/>
+    </span>
+    <br/>
+</xsl:template>
+
+
+
+
+
 </xsl:stylesheet>
